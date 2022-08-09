@@ -1,5 +1,5 @@
 import express from 'express';
-import { deleteCustomer, getCustomers, saveCustomer, getCustomer } from '../controllers/customerController/customerController.js';
+import { deleteCustomer, getCustomers, saveCustomer, getCustomer, updateCustomer, getInactiveCustomer } from '../controllers/customerController/customerController.js';
 import { getDetails, saveCustomerDetails,managerDetails } from '../controllers/customerControllerDetails/customerControllerDetails.js';
 import { getManager, getManagers, login, register } from '../controllers/managerController/managerController.js';
 const router = express.Router();
@@ -14,8 +14,8 @@ router.delete('/customer/:id', deleteCustomer);
 router.get('/:id',getManager)
 router.get('/details/:id', getDetails);
 router.get('/managerDetails/:manager_id', managerDetails)
-router.post('/details/:manager_id/:id', saveCustomerDetails)
+router.post('/details/:id', saveCustomerDetails)
+router.put('/edit/:manager_id/:id', updateCustomer)
+router.get('/inactive/:manager_id', getInactiveCustomer)
 
 export default router;
-
-//https://react-bootstrap.github.io/components/modal/

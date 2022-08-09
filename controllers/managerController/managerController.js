@@ -58,6 +58,7 @@ export const login = async (req, res) => {
         if (!match) return res.status(400).json({ msg: "Wrong password" });
         res.json(manager[0].id )
     } catch (error) {
+        alert("wrong data")
         res.status(400).json({ msg: "wrong email" })
 
     }

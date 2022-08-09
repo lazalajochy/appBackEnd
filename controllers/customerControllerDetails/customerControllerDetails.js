@@ -1,5 +1,6 @@
 import CustomerDetails from "../../models/customerDetails/customerDetails.js";
 
+
 export const getDetails = async(req, res) => {
     try {
         const details = await CustomerDetails.findAll({
@@ -29,9 +30,12 @@ export const managerDetails = async (req, res) => {
 }
 
 export const saveCustomerDetails = async (req, res) => {
-    const {amount, totalPayment, paymentWeek, amountPaid, amountNotPaid, weeksPaid, weeksNotPaid, advance, details_id, manager_id} = req.body
+    const {customerName, customerPersonalId, customerPhone, amount, totalPayment, paymentWeek, amountPaid, amountNotPaid, weeksPaid, weeksNotPaid, advance, details_id} = req.body
     try {
         await CustomerDetails.create({
+            customerName: customerName,
+            customerPersonalId:customerPersonalId,
+            customerPhone: customerPhone,
             amount: amount,
             totalPayment:totalPayment,
             paymentWeek:paymentWeek,
@@ -40,8 +44,7 @@ export const saveCustomerDetails = async (req, res) => {
             weeksPaid:weeksPaid,
             weeksNotPaid:weeksNotPaid,
             advance:advance,
-            details_id:details_id,
-            manager_id: manager_id
+            details_id:details_id
         });
         res.json('details save')
     } catch (error) {

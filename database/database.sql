@@ -18,10 +18,24 @@ create table customers(
     primary key(id),
     customerName varchar(255),
     customerPersonalId varchar(255),
-    customerPhone float default 0,
+    customerPhone varchar(255),
     customer_id int references manager(id),
     createdAt date,
-    updatedAt date
+    updatedAt date,
+    amount float default 0,
+    weeks float default 13,
+    totalPayment float default 0,
+    amountPaid float default 0,
+    amountNotPaid float default 0,
+    weeksPaid  float default 0,
+    weeksNotPaid float default 0,
+    advance float default 0,
+    weeksDue float default 0,
+    mora float default 0,
+    paymentWeek float default 0,
+    countWeek int default 0,
+    status varchar(255) default "active"
+
 );
 
 
@@ -32,31 +46,30 @@ on update cascade;
 create table customerdetails(
     id int(11) auto_increment,
     primary key(id),
-    amount float default 0,
-    weeks int default 13,
-    totalPayment float default 0,
-    paymentWeek float default 0,
+    customerName varchar(255),
+    customerPersonalId varchar(255),
+    customerPhone varchar(255),
     createdAt date,
-     updatedAt date,
+    updatedAt date,
+    amount float default 0,
+    weeks float default 13,
+    totalPayment float default 0,
     amountPaid float default 0,
-    weeksPaid float default 0,
-    weeksNotPaid float default 0,
     amountNotPaid float default 0,
+    weeksPaid  float default 0,
+    weeksNotPaid float default 0,
     advance float default 0,
     weeksDue float default 0,
-    countWeeks float default 0,
     mora float default 0,
-    details_id int references customers(id),
-    manager_id int references manager(id)
+    paymentWeek float default 0,
+    details_id int references customers(id)
+
 );
 
 alter table customerdetails add foreign key(details_id) references customers(id)
 on delete cascade
 on update cascade;
 
-alter table customerdetails add foreign key(manager_id) references managers(id)
-on delete cascade
-on update cascade;
 
 
 
