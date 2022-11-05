@@ -1,5 +1,5 @@
 import express from 'express';
-import { deleteCustomer, getCustomers, saveCustomer, getCustomer, updateCustomer, getInactiveCustomer } from '../controllers/customerController/customerController.js';
+import { deleteCustomer, getCustomers, saveCustomer, getCustomer, updateCustomer, getInactiveCustomer, getReport } from '../controllers/customerController/customerController.js';
 import { getDetails, saveCustomerDetails,managerDetails } from '../controllers/customerControllerDetails/customerControllerDetails.js';
 import { getManager, getManagers, login, register } from '../controllers/managerController/managerController.js';
 const router = express.Router();
@@ -17,5 +17,6 @@ router.get('/managerDetails/:manager_id', managerDetails)
 router.post('/details/:id', saveCustomerDetails)
 router.put('/edit/:manager_id/:id', updateCustomer)
 router.get('/inactive/:manager_id', getInactiveCustomer)
+router.get('/report/:manager_id', getReport);
 
 export default router;

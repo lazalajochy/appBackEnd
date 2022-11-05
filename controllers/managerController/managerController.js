@@ -55,11 +55,11 @@ export const login = async (req, res) => {
         });
 
         const match = await bcrypt.compare(req.body.managerPassword, manager[0].managerPassword);
-        if (!match) return res.status(400).json({ msg: "Wrong password" });
+        if (!match) return res.status(400).json({ msg: "Wrong data" });
         res.json(manager[0].id )
     } catch (error) {
-        alert("wrong data")
-        res.status(400).json({ msg: "wrong email" })
+       // alert("wrong data")
+        res.status(400).json({ msg: "wrong data" })
 
     }
 };
